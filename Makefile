@@ -9,3 +9,9 @@ main: build
 
 build:
 	mkdir $(BINDIR)
+
+run:
+	./build/main
+
+clean:
+	rm -rv build

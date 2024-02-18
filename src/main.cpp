@@ -1,5 +1,10 @@
 #include <GL/glut.h>
 
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glutSwapBuffers();
+}
 
 int main(int argc, char** argv)
 {
@@ -8,6 +13,9 @@ int main(int argc, char** argv)
     glutInitWindowPosition(200, 400);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Cube");
-    
-    exit(EXIT_SUCCESS);
+
+    glutDisplayFunc(display);
+    glutMainLoop();
+
+    return 0;
 }
