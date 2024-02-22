@@ -1,5 +1,5 @@
-CC=gcc
-DEPS=transform.h
+CC=g++
+DEPS=transforms3D.h
 CFLAGS=-lGL -lGLU -lglut
 SRCDIR=src
 BINDIR=build
@@ -14,4 +14,4 @@ run:
 	./build/main
 
 clean:
-	rm -rv build
+	rm -rv $(BINDIR)
