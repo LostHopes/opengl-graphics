@@ -1,6 +1,8 @@
 class Triangle
 {
 private:
+    const int size;
+    int width = 400, height = 400;
 public:
     void transform3D();
     void transform2D();
@@ -15,7 +17,7 @@ public:
     void rebuild();
 
     void rotateX();
-    void rotateY();
+    static void rotateY();
     void rotateZ();
     void transpose();
     void scale();
