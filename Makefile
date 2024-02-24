@@ -1,11 +1,11 @@
 CC=g++
-DEPS=transforms3D.h
-CFLAGS=-lGL -lGLU -lglut
 SRCDIR=src
 BINDIR=build
+DEPS=$(shell find $(SRCDIR) -name "*.cpp")
+CFLAGS=-lGL -lGLU -lglut
 
 main: build
-	$(CC) $(CFLAGS) -o $(BINDIR)/main $(SRCDIR)/$(DEPS) $(SRCDIR)/main.cpp
+	$(CC) $(CFLAGS) -o $(BINDIR)/main $(DEPS)
 
 build:
 	mkdir $(BINDIR)
