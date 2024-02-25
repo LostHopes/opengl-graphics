@@ -7,7 +7,8 @@ void keyboard(unsigned char key, int x0, int y0)
 	switch (key)
     {
     case '1':
-        Triangle::rotateY();
+        Triangle *t;
+        t->rotateY(-90.0);
         glutPostRedisplay();
         break;
     case '2':
@@ -33,8 +34,6 @@ int main(int argc, char** argv)
 
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-
-    Triangle::rotateY();
 
     glutMainLoop();
 
