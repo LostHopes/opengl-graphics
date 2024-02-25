@@ -22,6 +22,13 @@ void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glutSwapBuffers();
+
+    Triangle *t = new Triangle();
+    t->projection();
+    t->system3D();
+    t->image();
+    t->build();
+    t->rebuild();
 }
 
 int main(int argc, char** argv)
