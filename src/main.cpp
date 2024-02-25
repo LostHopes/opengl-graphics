@@ -7,8 +7,7 @@ void keyboard(unsigned char key, int x0, int y0)
 	switch (key)
     {
     case '1':
-        Triangle *t;
-        t->rotateY(-90.0);
+        rotateY(-90.0);
         glutPostRedisplay();
         break;
     case '2':
@@ -21,14 +20,13 @@ void keyboard(unsigned char key, int x0, int y0)
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    projection();
+    system3D();
+    image();
+    build();
+    rebuild();
     glutSwapBuffers();
 
-    Triangle *t = new Triangle();
-    t->projection();
-    t->system3D();
-    t->image();
-    t->build();
-    t->rebuild();
 }
 
 int main(int argc, char** argv)

@@ -1,11 +1,22 @@
 #include "triangle.h"
 #include <math.h>
 
-void Triangle::transform3D(){}
+const int size = 4;
+const int width = 400, height = 400;
+double c = 30;
+double F[3][4];
+double Pr[4][4];
 
-void Triangle::transform2D(){}
+double F1[3][4] , F_new[3][4], F_pr[3][4];
 
-void Triangle::multiply(double a[4][4], double b[4][4], double c[4][4]){
+double T[4][4];
+double cx = width / 2, cy = height / 2;
+
+void transform3D(){}
+
+void transform2D(){}
+
+void multiply(double a[4][4], double b[4][4], double c[4][4]){
     double s;
 
 	for (int i = 0; i < size; i++)
@@ -22,7 +33,7 @@ void Triangle::multiply(double a[4][4], double b[4][4], double c[4][4]){
 	}
 }
 
-void Triangle::multiplyF(double a[3][4], double b[4][4], double c[3][4]){
+void multiplyF(double a[3][4], double b[4][4], double c[3][4]){
     double s;
 
 	for (size_t i = 0; i < size - 1; i++)
@@ -39,11 +50,29 @@ void Triangle::multiplyF(double a[3][4], double b[4][4], double c[3][4]){
 	}
 }
 
-void Triangle::projection(){
-	
+void projection(){
+	Pr[0][0] = cos(29);
+	Pr[0][1] = -sin(29) * sin(26);
+	Pr[0][2] = 0;
+	Pr[0][3] = 0;
+
+	Pr[1][0] = 0;
+	Pr[1][1] = cos(26);
+	Pr[1][2] = 0;
+	Pr[1][3] = 0;
+
+	Pr[2][0] = -sin(29);
+	Pr[2][1] = -cos(29) * sin(26);
+	Pr[2][2] = 0;
+	Pr[2][3] = 0;
+
+	Pr[3][0] = 0;
+	Pr[3][1] = 0;
+	Pr[3][2] = 0;
+	Pr[3][3] = 1;
 }
 
-void Triangle::system3D(){
+void system3D(){
 	glClearColor(1, 1, 1, 0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -89,7 +118,7 @@ void Triangle::system3D(){
 	glEnd();
 }
 
-void Triangle::build(){
+void build(){
 	multiplyF(F, Pr, F_pr);
 	double x, y, x_ek, y_ek;
 
@@ -119,7 +148,7 @@ void Triangle::build(){
 	
 }
 
-void Triangle::rebuild(){
+void rebuild(){
 	multiplyF(F, T, F_new);
 	multiplyF(F_new, Pr, F_pr);
 	double x, y, x_ek, y_ek;
@@ -151,9 +180,9 @@ void Triangle::rebuild(){
 	
 }
 
-void Triangle::rotateX(){}
+void rotateX(double angle){}
 
-void Triangle::rotateY(double angle)
+void rotateY(double angle)
 {
 	angle = angle * M_PI / 180;
 
@@ -177,19 +206,19 @@ void Triangle::rotateY(double angle)
 	T[3][3] = 1;	
 }
 
-void Triangle::rotateZ(){}
+void rotateZ(double angle){}
 
-void Triangle::transpose(){}
+void transpose(){}
 
-void Triangle::scale(){}
+void scale(){}
 
-void Triangle::symmetryXY(){}
+void symmetryXY(){}
 
-void Triangle::symmetryXZ(){}
+void symmetryXZ(){}
 
-void Triangle::symmetryYZ(){}
+void symmetryYZ(){}
 
-void Triangle::image() {
+void image() {
 	F[0][0] = 1; 
 	F[0][1] = 1;
 	F[0][2] = 1;
