@@ -1,5 +1,6 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
+#include <iostream>
 #include "triangle.h"
 
 void keyboard(unsigned char key, int x0, int y0)

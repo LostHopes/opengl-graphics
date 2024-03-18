@@ -1,4 +1,5 @@
 #ifndef TRIANGLE_H
+#define TRIANGLE_H
 #include <GL/gl.h>
 #include <GL/glut.h>
 
