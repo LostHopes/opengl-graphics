@@ -93,38 +93,40 @@ void system3D()
 		{0, 0, 7, 1}};
 
 	double S_pr[4][4], S1[4][4];
-	double x, y, x_ek, y_ek;
+	double x, y, z, x_ek, y_ek, z_ek; // Add z variable
 
 	multiply(S, Pr, S_pr);
 
-	for (int i = 0; i < size - 1; i++)
+	for (int i = 0; i < size; i++)
 	{
-		x = Pr[i][0];
+		x = S_pr[i][0];
 		y = S_pr[i][1];
+		z = S_pr[i][2];
 
 		x_ek = c * x + cx;
 		y_ek = c * y + cy;
+		z_ek = z;
 
 		S1[i][0] = x_ek;
 		S1[i][1] = y_ek;
+		S1[i][2] = z_ek;
 	}
 
 	glColor3d(0, 0, 0);
 	glLineWidth(3);
 	glBegin(GL_LINES);
 
-	glVertex2d(S1[0][0], S1[0][1]);
-	glVertex2d(S1[1][0], S1[1][1]);
+	glVertex3d(S1[0][0], S1[0][1], S1[0][2]);
+	glVertex3d(S1[1][0], S1[1][1], S1[1][2]);
 
-	glVertex2d(S1[0][0], S1[0][1]);
-	glVertex2d(S1[2][0], S1[2][1]);
+	glVertex3d(S1[0][0], S1[0][1], S1[0][2]);
+	glVertex3d(S1[2][0], S1[2][1], S1[2][2]);
 
-	glVertex2d(S1[0][0], S1[0][1]);
-	glVertex2d(S1[3][0], S1[3][1]);
+	glVertex3d(S1[0][0], S1[0][1], S1[0][2]);
+	glVertex3d(S1[3][0], S1[3][1], S1[3][2]);
 
 	glEnd();
 }
-
 void build()
 {
 	multiplyF(F, Pr, F_pr);
